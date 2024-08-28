@@ -16,3 +16,9 @@ BLYNK_WRITE(V2){
   // Serial.println(setm);
   setSetm = setm;
 }
+
+BLYNK_CONNECTED(){
+  Blynk.virtualWrite(V0, 0); 
+  Blynk.virtualWrite(V1, 0); 
+  Blynk.virtualWrite(V2, 0); 
+}

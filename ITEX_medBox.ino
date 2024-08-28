@@ -16,6 +16,12 @@
 #include "SoftwareSerial.h"
 #include "DFRobotDFPlayerMini.h"
 
+#include <HTTPClient.h>
+
+#include <TridentTD_LineNotify.h>
+
+#define LINE_TOKEN  "MBovazmJoELV5AWh33V9QOQ8Owuxj6mC7L7S3Y4WD2v"
+
 //-----------------------------------------------------------------
 
 static const uint8_t PIN_MP3_TX = 26; // Connects to module's RX 
@@ -59,6 +65,15 @@ char stop[] = {'3', '1', '0'};
 char timeHour[3];
 char timeMinute[3];
 
+int alarmH;
+int alarmM;
+
+//-----------------------------------------------------------------
+
+String GOOGLE_SCRIPT_ID = "AKfycbzWbrcUdIX71SKicfEksJS4sqWz9ztKajoOzYe0iB0wWwR9bjmWnbCv2OkR7Z8nrQtb";
+
+int i = 0;
+
 //-----------------------------------------------------------------
 
 #define button 4
@@ -90,6 +105,10 @@ void setup()
   else {
     Serial.println("Connecting to DFPlayer Mini failed!");
   }
+
+  LINE.setToken(LINE_TOKEN);
+  
+  LINE.notify("Welcome, USER");
 
 }
 
